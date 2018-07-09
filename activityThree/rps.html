@@ -1,0 +1,92 @@
+<html>
+    <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel = "stylesheet" type = "text/css" href = "animate.css">
+        <link rel = "stylesheet" type = "text/css" href = "rps.css">
+        <link rel = "stylesheet" type = "text/css" href = "aa.css">
+    </head>
+    
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        
+        <div>
+            <button class = btn btn-primary id = "rock" onclick="rps('rock')">Rock</button>
+            <button class = btn btn-primary id = "paper" onclick="rps('paper')">Paper</button>
+            <button class = btn btn-primary id = "scissors" onclick="rps('scissors')">Scissors</button>
+        </div>
+        <div>
+        
+        <p id = "message">
+        </p>
+            
+        </div>
+        
+        <script>
+            function rps(item){
+                var random = Math.floor(Math.random() * 3);
+                var randomItem;
+            
+                
+                if(random === 0){
+                   randomItem = 'rock';
+                }
+                else if (random === 1){
+                    randomItem = 'paper';
+                }
+                else{
+                    randomItem = 'scissors';
+                }
+                
+                if(item === randomItem){
+                    document.getElementById("message").innerHTML = "Tie!";
+                }
+                else if(randomItem === 'rock'){
+                    if(item === 'paper'){
+                        document.getElementById("message").innerHTML = "Paper beats rock! You win!";
+                        animate('paper', 'bounce');
+                    }else{
+                        document.getElementById("message").innerHTML = "Rock beats scissors! You lose!";
+                        animate('scissors', 'shake');
+                    }
+                }
+                else if(randomItem === 'paper'){
+                    if(item === 'rock'){
+                        document.getElementById("message").innerHTML = "Paper beats rock! You lose!";
+                        animate('rock', 'shake');
+                    }
+                    else{
+                        document.getElementById("message").innerHTML = "Scissors beats paper! You win!";
+                        animate('scissors', 'bounce');
+                        
+                    }
+                    //check if your item === rock
+                    //check if your item === scissors
+                }
+                else if(randomItem === 'scissors'){
+                    if(item === 'rock'){
+                        document.getElementById("message").innerHTML = "Rock beats scissors! You win!";
+                        animate('rock', 'bounce');
+                    }
+                    else{
+                        document.getElementById("message").innerHTML = "Scissors beats paper! You lose!";
+                        animate('paper', 'shake');
+                    }
+                }
+                    //check if your item === rock
+                    //check if your item ===paper
+                }
+            
+            function animate(element, name){
+                document.getElementById(element).classList.toggle(name);
+                document.getElementById(element).classList.toggle('animated');
+                setTimeout(function(){
+                document.getElementById(element).classList.toggle(name);
+                document.getElementById(element).classList.toggle('animated');
+                },1000)
+                
+            }
+            
+        </script>
+       
+    </body>
+</html>
